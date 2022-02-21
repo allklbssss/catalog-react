@@ -1,13 +1,17 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import ListItem from "./components/ListItem";
-import { data } from "./data";
+import AccountPage from "./pages/AccountPage";
+import CatalogPage from "./pages/CatalogPage";
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <Header title={"Каталог"} />
-      {data.map(({type, title, text, link}) => <ListItem type={type} title={title} text={text} link={link}  />)}
-    </div>
+      <Routes>
+        <Route path="/" element={<CatalogPage />} />
+        <Route path="/:path" element={<AccountPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
